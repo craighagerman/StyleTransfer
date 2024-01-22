@@ -9,6 +9,9 @@ outputs/
 # checkpoint files
 *.ckpt
 
+# virtualenv dir
+venv/
+
 # ----------------------------------------
 
 # Byte-compiled / optimized / DLL files
