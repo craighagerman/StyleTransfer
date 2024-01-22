@@ -1,3 +1,16 @@
+
+# mac file
+.DS_STORE
+
+# input & output data
+data/
+outputs/
+
+# checkpoint files
+*.ckpt
+
+# ----------------------------------------
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
