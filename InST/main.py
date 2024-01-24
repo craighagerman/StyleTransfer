@@ -892,7 +892,8 @@ if __name__ == "__main__":
                 melk()
                 raise
         if not opt.no_test and not trainer.interrupted:
-            trainer.test(model, data)
+            data_module = DataModuleFromConfig(bs)
+            trainer.test(model, data, datamodule=data_module)
     except Exception:
         if opt.debug and trainer.global_rank == 0:
             try:
