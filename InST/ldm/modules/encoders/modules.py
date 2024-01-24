@@ -5,7 +5,6 @@ import clip
 from einops import rearrange, repeat
 from transformers import CLIPTokenizer, CLIPTextModel, CLIPProcessor, CLIPModel
 import kornia
-from transformers import CLIPProcessor, CLIPModel
 
 from ldm.modules.x_transformer import Encoder, TransformerWrapper  # TODO: can we directly rely on lucidrains code and simply add this as a reuirement? --> test
 
@@ -325,7 +324,7 @@ class FrozenCLIPEmbedder(AbstractEncoder):
         for param in self.parameters():
             param.requires_grad = False
 
-    def forward(self, text, input_img,**kwargs):
+    def forward(self, text, input_img, **kwargs):
         if input_img is None:
             print('input_img is None')
             input_img = torch.rand(size=(1,3,512,512)).to(self.device)
@@ -412,6 +411,19 @@ class FrozenClipImageEmbedder(nn.Module):
     def forward(self, x):
         # x is assumed to be in range [-1,1]
         return self.model.encode_image(self.preprocess(x))
+
+
+# deleteme
+def foobar(path):
+    from torchvision import transforms
+    img = Image.open(path)
+    convert_tensor = transforms.ToTensor()
+    x = convert_tensor(img)
+
+    from ldm.util import count_params
+    embedder = FrozenClipImageEmbedder()
+    count_params(embedder, verbose=True)
+    y = embedder.forward(x)
 
 
 if __name__ == "__main__":
