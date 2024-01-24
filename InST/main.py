@@ -21,7 +21,7 @@ from pytorch_lightning.utilities.distributed import rank_zero_only
 # Pytorch 2.x
 # from pytorch_lightning.utilities.rank_zero import rank_zero_only
 
-# from pytorch_lightning.utilities import rank_zero_info
+from pytorch_lightning.utilities import rank_zero_info
 
 from ldm.data.base import Txt2ImgIterableBaseDataset
 from ldm.util import instantiate_from_config
