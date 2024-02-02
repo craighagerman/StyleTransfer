@@ -18,4 +18,4 @@ transformers
 torchmetrics
 kornia
 taming-transformers
-clip
+ipython
