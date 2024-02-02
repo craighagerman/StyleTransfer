@@ -12,6 +12,9 @@ outputs/
 # virtualenv dir
 venv/
 
+# log output directory
+logs/
+
 # ----------------------------------------
 
 # Byte-compiled / optimized / DLL files
