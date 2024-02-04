@@ -135,8 +135,10 @@ class EmbeddingManager(nn.Module):
         self.string_to_token_dict = ckpt["string_to_token"]
 
         if 'attention' in ckpt.keys():
+            print(f"setting self.attention = ckpt[attention]")
             self.attention = ckpt["attention"]
         else:
+            print(f"setting self.attention = None")
             self.attention = None
 
     def embedding_parameters(self):
