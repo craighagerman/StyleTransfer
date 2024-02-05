@@ -87,9 +87,15 @@ def instantiate_from_config(config, **kwargs):
 
 def get_obj_from_str(string, reload=False):
     module, cls = string.rsplit(".", 1)
+    print(f"module: {module}. cls: {cls}")
     if reload:
         module_imp = importlib.import_module(module)
         importlib.reload(module_imp)
+    
+    print(f"importing module: {module}...")
+    importlib.import_module(module, package=None)
+    print(f"import successful")
+
     return getattr(importlib.import_module(module, package=None), cls)
 
 

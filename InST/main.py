@@ -33,6 +33,7 @@ def load_model_from_config(config, ckpt, verbose=False):
     sd = pl_sd["state_dict"]
     config.model.params.ckpt_path = ckpt
     model = instantiate_from_config(config.model)
+    print(f"Model instantiated successfully")
     m, u = model.load_state_dict(sd, strict=False)
     if len(m) > 0 and verbose:
         print("missing keys:")
