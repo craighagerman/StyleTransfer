@@ -17,9 +17,9 @@ from pytorch_lightning.trainer import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint, Callback, LearningRateMonitor
 
 # Pytorch 1.x
-from pytorch_lightning.utilities.distributed import rank_zero_only
+# from pytorch_lightning.utilities.distributed import rank_zero_only
 # Pytorch 2.x
-# from pytorch_lightning.utilities.rank_zero import rank_zero_only
+from pytorch_lightning.utilities.rank_zero import rank_zero_only
 
 from pytorch_lightning.utilities import rank_zero_info
 
@@ -33,7 +33,6 @@ def load_model_from_config(config, ckpt, verbose=False):
     sd = pl_sd["state_dict"]
     config.model.params.ckpt_path = ckpt
     model = instantiate_from_config(config.model)
-    print(f"Model instantiated successfully")
     m, u = model.load_state_dict(sd, strict=False)
     if len(m) > 0 and verbose:
         print("missing keys:")
@@ -670,6 +669,7 @@ if __name__ == "__main__":
             gpuinfo = trainer_config["gpus"]
             print(f"Running on GPUs {gpuinfo}")
             cpu = False
+        # WIP
         trainer_opt = argparse.Namespace(**trainer_config)
         lightning_config.trainer = trainer_config
 
