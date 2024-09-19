@@ -19,10 +19,12 @@ from functools import partial
 from tqdm import tqdm
 from torchvision.utils import make_grid
 
-# Pytorch 1.x
-# from pytorch_lightning.utilities.distributed import rank_zero_only
-# Pytorch 2.x
-from pytorch_lightning.utilities.rank_zero import rank_zero_only
+try:
+    # Pytorch 1.x
+    from pytorch_lightning.utilities.distributed import rank_zero_only
+except ModuleNotFoundError:
+    # Pytorch 2.x
+    from pytorch_lightning.utilities.rank_zero import rank_zero_only
 
 from ldm.util import (
     log_txt_as_img,

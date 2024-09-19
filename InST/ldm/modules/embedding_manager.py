@@ -130,7 +130,7 @@ class EmbeddingManager(nn.Module):
 
     def load(self, ckpt_path):
         ckpt = torch.load(ckpt_path, map_location='cpu')
-        print('find keys:',ckpt.keys())
+        print('find keys:', ckpt.keys())
 
         self.string_to_token_dict = ckpt["string_to_token"]
 

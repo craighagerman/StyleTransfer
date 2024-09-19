@@ -70,7 +70,7 @@ model:
       target: ldm.modules.encoders.modules.FrozenCLIPEmbedder
 
 data:
-  target: main.DataModuleFromConfig
+  target: main2_modules.DataModuleFromConfig
   params:
     batch_size: 1
     num_workers: 1
@@ -93,7 +93,7 @@ data:
 lightning:
   callbacks:
     image_logger:
-      target: main.ImageLogger
+      target: main2_modules.ImageLogger
       params:
         batch_frequency: 500
         max_images: 8
